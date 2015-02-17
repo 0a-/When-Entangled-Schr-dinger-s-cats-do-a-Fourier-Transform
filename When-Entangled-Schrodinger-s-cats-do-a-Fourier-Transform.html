@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h3>When entangled schrödinger's <br>cats do a Fourier Transform</h3>
+					<img src="amanda_tipton_kitten_play.jpg" style="max-width:45%">
+				</section>
+
+				<section>
+					<h2><small>A brief look into what goes on in Shor's algorithm as described in Peter Shor's 1995 paper</small></h2>
+					<h4 style="line-height:2em; margin:1em auto">
+					<small style="font-size: 0.55em; font-family:Arial">"Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer" (Link to pdf <a href="http://arxiv.org/abs/quant-ph/9508027">here</a>)</small>
+					</h4>
+					<p>
+						<small>by Archy Wilhes | on github as <a href="https://github.com/0a-">0a-</a> | tweets <a href="https://twitter.com/archywilhes">@archywilhes</a><br><Br>
+						an article on the same topic (in more details & technicalities) soon to be published on <a href="http://0a.io">0a.io</a>
+						</small>
+					</p>
+				</section>
+
+				<section>
+				<img src="feynman.jpg" style="max-width:50%">
+				<h4>"I think I can safely say that nobody understands quantum mechanics." - Richard Feynman</h4>
+				</section>
+
+				<section>
+				<img src="wave.png">
+				<p><small>destructive interference of wave propagations</small></p>
+				</section>
+				
+				<section>
+				<img src="dse.jpg">
+				<p><small>Single electron events build up to from an interference pattern in the double-slit experiments.</small></p>
+				</section>
+
+				<section>
+				<img src="cat.png">
+				<img src="cat2.jpg">
+				</section>
+
+				<section>
+				<img src="bell.png">
+				<p><small>The spins of entangled photons (after polarization) are measured & compared in <br>the Bell's inequality experiments to disprove local hidden variable theory.</small></p>
+				</section>
+
+				<section>
+				<h3>Quantum Turing Machine<br>vs<br>Classical Turing Machine</h3>
+				</section>
+
+				<section>
+				<h3>A qubit is a schrödinger's cat.</h3>
+				<p>Can be both 1 and 0 at the same time</p>
+				<br>
+				<h3>A classical bit is classical.</h3>
+				<p>Is either 1 or 0.</p>
+				</section>
+
+				<section>
+				<h3>Qubits are entangled.</h3>
+				<p>A $n$ qubits system can be expressed as <br>a sum of all possible states, <br>each multiplying a probability amplitude </p>
+				<small>$$\sum^{2^n-1}_{i=0} a_i \left |S_i \right\rangle \\\begin{align} &\text{ where } \left |S_i \right\rangle \text{ is one of the $2^n$ possible states, can be expressed as }\sum^{n-1}_{a=0} 2^a d_a \\ &a_i \text{ is a complex number and } a{_i}^2 \text{ is the possibility of being in that state} \end{align}$$</small>
+				<br>
+				<br>
+				<h3>Classical bits are classical.</h3>
+				<small>$$\sum^{n-1}_{a=0} 2^a d_a \text{ where } d_a \text{ is 0 or 1 (the boolean value of a-th digit)}$$</small>
+				</section>
+
+				<section>
+				<h3>a system with 1 qubit</h3>
+				$$a \left | 0 \right\rangle + b \left | 1 \right\rangle $$
+				<br>
+				$$\text{where } a^2+b^2=1$$
+				<br>
+				<h3>a system with 3 qubits</h3>
+					$$\begin{align} &a \left | 000 \right\rangle + b \left | 001 \right\rangle + c \left | 010 \right\rangle + d \left | 011 \right\rangle + \\ &e \left | 100 \right\rangle + f \left | 101 \right\rangle + g \left | 110 \right\rangle + h \left | 111 \right\rangle \end{align}$$
+					<br>
+					$$\text{where } a^2+b^2+c^2+d^2+e^2+f^2+g^2+h^2 = 1$$
+				</section>
+
+				<section>
+				<img src="the-entanglement-with-cats.jpg" width="70%">
+				<p>
+				Entangled cats.
+				</p>
+				</section>
+
+				<section>
+				<h4>Each bit can thus be expressed <br>as a $n^2$-dimensional vector</h4>
+				
+				$$\text{one qubit, }a \left | 0 \right\rangle + b \left | 1 \right\rangle \text{ , can be expressed as } \begin{pmatrix} a\\ b  \end{pmatrix}$$
+				<br>
+				<h4>Each quantum gate can thus be seen as a unitary matrix. (hence "reversible" in chapter 3)</h4>
+				$$\begin{pmatrix} 0 & 1\\ 1 & 0  \end{pmatrix} \begin{pmatrix} a\\ b  \end{pmatrix} = \begin{pmatrix} b\\ a  \end{pmatrix}$$<br>
+				<img src="gate.png">
+				</section>
+				<section>
+				<p>manipulating qubits == doing linear algebra</p>
+				<h3>vs</h3>
+				<p>manipulating classical bits == doing boolean algebra</p>
+				</section>
+				<section>
+				<h3>Quantum Fourier Transform</h3>
+				<p>It's basically the quantum implementation of the Discrete Fourier transform.</p>
+				$$\frac{1}{\sqrt{N}} \begin{pmatrix} 1 & 1 & 1 & 1 &... & 1 \\ 1 & ω & ω^2 & ω^3 & ... & ω^{N-1} \\ 1 & ω^2 & w^4 & ω^6 & ... & w^{2(N-1)} \\ . & . & . & . & . & . \\ 1 & ω^{N-1} & ω^{2(N-1)} & ω^{3(N-1)} & ... & ω^{(N-1)^2} \end{pmatrix} \begin{pmatrix} \alpha_1 \\ \alpha_2 \\ \alpha_3 \\ . \\ \alpha_N  \end{pmatrix} $$
+				<br>
+				where $ω = e^{ (2 \pi i)/N}$ and $N$ is the number of possible states ($2^n$ for $n$-qubits)
+				</section>
+
+				<section>
+				<img src="cat.jpg">
+				</section>
+
+				<section>
+				<img src="cat-you-dont.jpg">
+				</section>
+
+				<section>
+				<p>Let there be a function $f:{0,1,...M} \Rightarrow S$, such that for all $x$, $f(x) = f(X+r)$.</p>
+				<br>
+				<p>Shor shows that we can implement a quantum circuit with QFT that can help us find r much faster comparing to classical approach.</p>
+				</section>
+
+				<section>
+				<h2>A prime factorization problem</h2>
+				<p>can be converted into</p>
+				<h2>a peroid finding problem</h2>
+				<p>in modular arithmetic.</p>
+				</section>
+
+				<section>
+				<img src="quantum.png">
+				</section>
+				<section>
+				<p><img width="300px" src="nsa.png"></p>
+				2014: based on documents by Edward Snowden:<br> NSA runs $79.7 million research, "Pentrating Hard Targets", <br>to develop quantum computer
+				</section>
+				<section>
+				The End.
+				</section>
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				math: {
+				        mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+				        config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				    },
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'plugin/math/math.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
