@@ -142,7 +142,42 @@
 					</div>
 				</div>
 			</section>
+			<section>
+				<div style="margin-bottom:60px">
+				<pre><code class="lisp">
+(define factorial
+    (lambda (n)
+      (if (= n 0)
+          1
+          (* n (factorial (- n 1))))))
+(factorial 3)
+			</code></pre>
+            (factorial 3 ) = 3 * 2 * 1
+		</div>
+		<div class="fragment" style="overflow:hidden">
+			<div style="width:50%;float:left">
+			<pre style="line-height:1"><code class="javascript" style="font-size: 0.7em">
+function factorial(n){
+	if(n === 0){
+		return 1
+	}else{
+		return n * factorial(n - 1)
+	}
+}
+factorial(3)
+		</code></pre>
+		<small>(a Javascript translation)</small>
+	</div>
+	<div style="width:50%; float:left">
+		<pre style="line-height:1"><code class="haskell" style="font-size: 0.7em">
+factorial 0 = 1
+factorial n = n * factorial (n - 1)
+factorial 3
+</code></pre>
+	<small>(a Haskell translation for fun.)</small>
+		</div>
 
+	</section>
  <section>
 		<p>Step 1: Tokenization</p>
 		<p><small>Based on some rules, separate characters into groups.</small>
@@ -284,7 +319,17 @@ n ::= 0 | 1 + n
 	</div>
 
 	</section>
-
+	<section>
+			<p>That's it. That's basically how a Sceheme interpreter would go about interpreting the following text.</p>
+			<div><pre><code class="lisp">
+(define factorial
+	(lambda (n)
+		(if (= n 0)
+		    1
+		    (* n (factorial (- n 1))))))
+(factorial 3)
+</code></pre></div>
+	</section>
 	<section>
 		<div style="overflow:hidden;">
 			<div class="fragment" style="width:50%; text-align:center; float:left">
@@ -323,6 +368,63 @@ n ::= 0 | 1 + n
 			},200)
 		})()
 		</script>
+	</section>
+	<section>
+			<div style="font-size:0.8em;margin-bottom:20px">
+				Conceptually Tokenization-Parsing-TreeTraversal describes the basics of how a (high-level language) interpreter does its interpreting.
+			</div>
+			<div class="fragment" style="margin-bottom:50px">
+			<small>
+				Low-level ones (often referred to as microprocessors) are even <br /> more straightforward on that.<br/><br />
+				The hard part lies in designing and realising them in the physical realm.
+			</small>
+			<img src="images/beautiful.jpg" style="width:360px"/>
+		</div>
+	</section>
+	<section>
+		<div style="font-size:0.9em;">
+			And in the real world we would always need to take performance into consideration.
+		</div>
+		<div style="font-size:0.8em; margin-top:30px">
+			That's why it is a common practise to compile the code before feeding them to a low-level interpreter.
+		</div>
+			<div style="font-size:0.5em;  margin-top:20px">
+			Optimisation can be implemented much easier during the process of comiling than interpreting. ☑<br/>
+			Compilation also reduces the size of the code significantly and helps with portability! ☑
+		</div>
+		<img src="images/compiling.png" style="width:320px" />
+	</section>
+	<section>
+		For example. The architecture of Google's V8 has evolved quite a lot since 2008:
+		<div style="position:relative; display: flex;
+  align-items: center;
+  justify-content: center; height:400px">
+<div class="fragment" style="position:absolute; top:0; width:700px"> <img src="images/v8_2008.png" /></div>
+<div class="fragment" style="position:absolute; top:0; width:700px"> <img src="images/v8_2010.png" /></div>
+		<div class="fragment" style="position:absolute; top:0; width:700px"> <img src="images/v8_2015.png" /></div>
+		<div class="fragment" style="position:absolute; top:0; width:700px" ><img src="images/v8_2017.png" /></div>
+		<div class="fragment" style="position:absolute; top:0; width:700px" ><img src="images/v8_now.png" /></div>
+	</div>
+	</section>
+	<section>
+		Source available on Github: https://github.com/v8/v8
+		<small>(I'm still in the midst of deconstructing it)</small> <br />
+		<p>V8 is written in C++.</p>
+		<div class="fragment">
+		<img src="images/oldsport.jpg" style="width:590px" />
+	</div>
+	</section>
+	<section>
+		<p style="font-size:0.75em">
+		The simplist and most elegant interpreter for a language is one written in the language itself and implements every feature using the existing features homomorphically.<br />
+	</p>
+	<p style="font-size:0.9em">
+		These interpreters are known as meta-circular interpreters. <br />
+	</p>
+		<img class="fragment" src="images/toy.jpg" style="width:510px" />
+	</section>
+	<section>
+		Here I'd show you very breifly <br />a meta-circular interpreter I wrote for Scheme.
 	</section>
 	<section>
 		<h1>Thank you!</h1>
